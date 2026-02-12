@@ -1,7 +1,7 @@
 ﻿
 namespace WebAppNotes.Data.Models
 {
-    public class Note : IEntity
+    public class Note : Entity
     {
         public string Name { get; set; } = null!;
         public string Description { get; set; } = null!;

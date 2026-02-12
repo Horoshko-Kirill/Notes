@@ -1,6 +1,6 @@
 ﻿namespace WebAppNotes.Data.Models
 {
-    public class IEntity
+    public class Entity
     {
         public Guid Id { get; set; }
     }
