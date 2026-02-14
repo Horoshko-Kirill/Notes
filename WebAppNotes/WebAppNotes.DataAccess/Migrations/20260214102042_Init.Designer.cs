@@ -12,8 +12,8 @@ using WebAppNotes.DataAccess.Data;
 namespace WebAppNotes.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260211232827_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20260214102042_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

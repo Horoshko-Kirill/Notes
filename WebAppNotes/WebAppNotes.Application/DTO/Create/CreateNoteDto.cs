@@ -1,0 +1,6 @@
+﻿namespace WebAppNotes.Application.DTO.Create
+{
+    public class CreateNoteDto
+    {
+    }
+}
