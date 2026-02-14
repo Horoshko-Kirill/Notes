@@ -8,7 +8,7 @@ namespace WebAppNotes.Application.Interfaces
         Task<List<NoteDto>> GetAllAsync(CancellationToken cancellationToken = default);
         Task<NoteDto?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
         Task AddAsync(CreateNoteDto entity, CancellationToken cancellationToken = default);
-        Task UpdateAsync(CreateNoteDto entity, CancellationToken cancellationToken = default);
+        Task UpdateAsync(Guid id, CreateNoteDto entity, CancellationToken cancellationToken = default);
         Task DeleteAsync(Guid id, CancellationToken cancellationToken = default);
     }
 }

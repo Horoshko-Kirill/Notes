@@ -16,16 +16,27 @@ namespace WebAppNotes.Application.Services
         }
         public async Task AddAsync(CreateTagDto entity, CancellationToken cancellationToken = default)
         {
-            Tag tag = new Tag
-            {
-                Name = entity.Name
-            };
+            var existTags = await _tagRepository.GetAllAsync(cancellationToken);
 
-            await _tagRepository.AddAsync(tag, cancellationToken);
+            if (!existTags.Any(t => t.Name.Equals(entity.Name)))
+            {
+                Tag tag = new Tag
+                {
+                    Name = entity.Name
+                };
+
+                await _tagRepository.AddAsync(tag, cancellationToken);
+            }
         }
 
         public async Task DeleteAsync(Guid id, CancellationToken cancellationToken = default)
         {
+            var tag = await _tagRepository.GetByIdAsync(id, cancellationToken);
+            if (tag == null)
+            {
+                throw new KeyNotFoundException($"Tag with Id {id} not found");
+            }
+
             await _tagRepository.DeleteAsync(id, cancellationToken);
         }
 
@@ -55,12 +66,16 @@ namespace WebAppNotes.Application.Services
             return MapToTagDto(tag);
         }
 
-        public async Task UpdateAsync(CreateTagDto entity, CancellationToken cancellationToken = default)
+        public async Task UpdateAsync(Guid id, CreateTagDto entity, CancellationToken cancellationToken = default)
         {
-            Tag tag = new Tag
+
+            var tag = await _tagRepository.GetByIdAsync(id, cancellationToken);
+            if (tag == null)
             {
-                Name = entity.Name,
-            };
+                throw new KeyNotFoundException($"Tag with Id {id} not found");
+            }
+
+            tag.Name = entity.Name;
 
             await _tagRepository.UpdateAsync(tag, cancellationToken);
         }
