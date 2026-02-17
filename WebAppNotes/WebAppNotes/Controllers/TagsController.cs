@@ -4,6 +4,8 @@ using WebAppNotes.Application.Interfaces;
 
 namespace WebAppNotes.Controllers
 {
+    [ApiController]
+    [Route("api/tags")]
     public class TagsController : ControllerBase
     {
         private readonly ITagService _tagService;

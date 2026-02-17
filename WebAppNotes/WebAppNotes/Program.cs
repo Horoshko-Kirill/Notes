@@ -8,8 +8,15 @@ builder.Services.AddDataAccess(options => options.UseNpgsql(builder.Configuratio
 
 builder.Services.AddApplication();
 
+builder.Services.AddControllers();
+
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello WebAppNotes!");
+app.MapControllers();
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.Run();
