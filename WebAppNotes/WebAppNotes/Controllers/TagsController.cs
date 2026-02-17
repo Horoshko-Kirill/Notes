@@ -27,12 +27,6 @@ namespace WebAppNotes.Controllers
         public async Task<IActionResult> GetById(Guid id, CancellationToken cancellationToken = default)
         {
             var tag = await _tagService.GetByIdAsync(id, cancellationToken);
-
-            if (tag == null)
-            {
-                return NotFound();
-            }
-
             return Ok(tag);
         }
 
@@ -46,14 +40,7 @@ namespace WebAppNotes.Controllers
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update(Guid id, CreateTagDto dto, CancellationToken cancellationToken = default)
         {
-            try
-            {
-                await _tagService.UpdateAsync(id, dto, cancellationToken);
-            }
-            catch (Exception ex)
-            {
-                return NotFound(ex.Message);
-            }
+            await _tagService.UpdateAsync(id, dto, cancellationToken);
             return NoContent();
 
         }
@@ -61,14 +48,7 @@ namespace WebAppNotes.Controllers
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken = default)
         {
-            try
-            {
-                await _tagService.DeleteAsync(id, cancellationToken);
-            }
-            catch (Exception ex)
-            {
-                return NotFound(ex.Message);
-            }
+            await _tagService.DeleteAsync(id, cancellationToken);
             return NoContent();
         }
     }

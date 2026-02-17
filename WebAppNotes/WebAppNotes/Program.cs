@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebAppNotes.DataAccess.DI;
 using WebAppNotes.Application.DI;
+using WebAppNotes.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,9 +15,11 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.MapControllers();
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.MapControllers();
 
 app.Run();

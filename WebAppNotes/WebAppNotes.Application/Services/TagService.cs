@@ -60,7 +60,7 @@ namespace WebAppNotes.Application.Services
 
             if (tag == null)
             {
-                return null;
+                throw new KeyNotFoundException($"Tag with Id {id} not found");
             }
 
             return MapToTagDto(tag);

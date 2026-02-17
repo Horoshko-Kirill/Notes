@@ -2,5 +2,6 @@
   <Project Path="WebAppNotes.Application/WebAppNotes.Application.csproj" />
   <Project Path="WebAppNotes.Data/WebAppNotes.Data.csproj" />
   <Project Path="WebAppNotes.DataAccess/WebAppNotes.DataAccess.csproj" />
+  <Project Path="WebAppNotes.Tests/WebAppNotes.Tests.csproj" Id="351946b4-2068-4151-b86e-46c142b13791" />
   <Project Path="WebAppNotes/WebAppNotes.csproj" />
 </Solution>

@@ -76,7 +76,7 @@ namespace WebAppNotes.Application.Services
 
             if (note == null)
             {
-                return null;
+                throw new KeyNotFoundException($"Note with Id {id} not found");
             }
 
             return MapToNoteDto(note);

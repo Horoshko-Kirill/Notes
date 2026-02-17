@@ -26,12 +26,6 @@ namespace WebAppNotes.Controllers
         public async Task<IActionResult> GetById(Guid id, CancellationToken cancellationToken = default)
         {
             var note = await _noteService.GetByIdAsync(id, cancellationToken);
-
-            if (note == null)
-            {
-                return NotFound();
-            }
-
             return Ok(note);
         }
 
@@ -45,28 +39,14 @@ namespace WebAppNotes.Controllers
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update(Guid id, CreateNoteDto dto, CancellationToken cancellationToken = default)
         {
-            try
-            {
-                await _noteService.UpdateAsync(id, dto, cancellationToken);
-            }
-            catch (Exception ex) 
-            {
-                return NotFound(ex.Message);
-            }
+            await _noteService.UpdateAsync(id, dto, cancellationToken);
             return NoContent();
         }
 
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken = default)
         {
-            try
-            {
-                await _noteService.DeleteAsync(id, cancellationToken);
-            }
-            catch (Exception ex)
-            {
-                return NotFound(ex.Message);
-            }
+            await _noteService.DeleteAsync(id, cancellationToken);
             return NoContent();
         }
 
