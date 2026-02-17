@@ -45,14 +45,28 @@ namespace WebAppNotes.Controllers
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update(Guid id, CreateNoteDto dto, CancellationToken cancellationToken = default)
         {
-            await _noteService.UpdateAsync(id, dto, cancellationToken);
+            try
+            {
+                await _noteService.UpdateAsync(id, dto, cancellationToken);
+            }
+            catch (Exception ex) 
+            {
+                return NotFound(ex.Message);
+            }
             return NoContent();
         }
 
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken = default)
         {
-            await _noteService.DeleteAsync(id, cancellationToken);
+            try
+            {
+                await _noteService.DeleteAsync(id, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
             return NoContent();
         }
 

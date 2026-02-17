@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebAppNotes.Application.DTO.Create;
 using WebAppNotes.Application.Interfaces;
+using WebAppNotes.Application.Services;
 
 namespace WebAppNotes.Controllers
 {
@@ -45,14 +46,29 @@ namespace WebAppNotes.Controllers
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update(Guid id, CreateTagDto dto, CancellationToken cancellationToken = default)
         {
-            await _tagService.UpdateAsync(id, dto, cancellationToken);
+            try
+            {
+                await _tagService.UpdateAsync(id, dto, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
             return NoContent();
+
         }
 
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken = default)
         {
-            await _tagService.DeleteAsync(id, cancellationToken);
+            try
+            {
+                await _tagService.DeleteAsync(id, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
             return NoContent();
         }
     }

@@ -27,7 +27,7 @@ namespace WebAppNotes.Application.Services
             foreach (string tagItem in entity.Tags)
             {
                 Tag tag = existsTag.FirstOrDefault(t => t.Name == tagItem) ?? new Tag { Name = tagItem };
-                if (!tags.Contains(tag))
+                if (!tags.Any(t => t.Name == tag.Name))
                 {
                     tags.Add(tag);
                 }
