@@ -8,10 +8,10 @@ namespace WebAppNotes.Application.Services
 {
     public class NoteService : INoteService
     {
-        private readonly IRepository<Note> _noteRepository;
-        private readonly IRepository<Tag> _tagRepository;
+        private readonly INoteRepository _noteRepository;
+        private readonly ITagRepository _tagRepository;
 
-        public NoteService(IRepository<Note> noteRepository, IRepository<Tag> tagRepository)
+        public NoteService(INoteRepository noteRepository, ITagRepository tagRepository)
         {
             _noteRepository = noteRepository;
             _tagRepository = tagRepository;

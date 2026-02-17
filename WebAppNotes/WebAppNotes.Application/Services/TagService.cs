@@ -8,9 +8,9 @@ namespace WebAppNotes.Application.Services
 {
     public class TagService : ITagService
     {
-        private readonly IRepository<Tag> _tagRepository;
+        private readonly ITagRepository _tagRepository;
 
-        public TagService(IRepository<Tag> tagRepository)
+        public TagService(ITagRepository tagRepository)
         {
             _tagRepository = tagRepository;
         }
