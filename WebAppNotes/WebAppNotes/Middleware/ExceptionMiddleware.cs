@@ -9,7 +9,7 @@ namespace WebAppNotes.Middleware
 
         public ExceptionMiddleware(RequestDelegate next)
         {
-            _next = next; 
+            _next = next;
         }
 
         public async Task InvokeAsync(HttpContext context)
@@ -31,11 +31,11 @@ namespace WebAppNotes.Middleware
 
             switch (exception)
             {
-                case KeyNotFoundException:  
+                case KeyNotFoundException:
                     status = HttpStatusCode.NotFound;
                     message = exception.Message;
                     break;
-                case ArgumentException:   
+                case ArgumentException:
                     status = HttpStatusCode.BadRequest;
                     message = exception.Message;
                     break;

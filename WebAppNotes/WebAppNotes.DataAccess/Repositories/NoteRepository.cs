@@ -16,7 +16,7 @@ namespace WebAppNotes.DataAccess.Repositories
 
         public override Task<Note?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
-            return _entites.Include(n => n.Tags).FirstOrDefaultAsync(n =>  n.Id == id, cancellationToken);
+            return _entites.Include(n => n.Tags).FirstOrDefaultAsync(n => n.Id == id, cancellationToken);
         }
     }
 }

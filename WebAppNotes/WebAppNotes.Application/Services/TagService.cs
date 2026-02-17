@@ -24,7 +24,7 @@ namespace WebAppNotes.Application.Services
                 {
                     Name = entity.Name
                 };
-                
+
                 await _tagRepository.AddAsync(tag, cancellationToken);
             }
         }

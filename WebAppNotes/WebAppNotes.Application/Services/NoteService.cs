@@ -106,7 +106,7 @@ namespace WebAppNotes.Application.Services
             note.Name = entity.Name;
             note.Description = entity.Description;
             note.Tags = tags;
-            note.UpdateDate = DateTime.UtcNow; 
+            note.UpdateDate = DateTime.UtcNow;
 
             await _noteRepository.UpdateAsync(note, cancellationToken);
         }
