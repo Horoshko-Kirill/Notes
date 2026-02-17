@@ -1,0 +1,6 @@
+services:
+  webappnotes:
+    image: ${DOCKER_REGISTRY-}webappnotes
+    build:
+      context: .
+      dockerfile: WebAppNotes/Dockerfile
