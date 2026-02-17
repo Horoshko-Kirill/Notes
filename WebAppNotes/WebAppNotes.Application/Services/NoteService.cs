@@ -38,8 +38,8 @@ namespace WebAppNotes.Application.Services
                 Name = entity.Name,
                 Description = entity.Description,
                 Tags = tags,
-                CreationDate = DateTime.Now,
-                UpdateDate = DateTime.Now,
+                CreationDate = DateTime.UtcNow,
+                UpdateDate = DateTime.UtcNow,
             };
 
             await _noteRepository.AddAsync(note, cancellationToken);
