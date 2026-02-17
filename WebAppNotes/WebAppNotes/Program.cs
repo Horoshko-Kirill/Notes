@@ -1,15 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using WebAppNotes.Data.Models;
 using WebAppNotes.DataAccess.Data;
 using WebAppNotes.DataAccess.Interfaces;
 using WebAppNotes.DataAccess.Repositories;
+using WebAppNotes.DataAccess.DI;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<AppDbContext>(options =>
+builder.Services.AddDataAccess(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-builder.Services.AddScoped(typeof(IRepository<>), typeof(EntityRepository<>));
 
 var app = builder.Build();
 

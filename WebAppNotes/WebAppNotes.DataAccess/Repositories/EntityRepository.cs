@@ -5,7 +5,7 @@ using WebAppNotes.DataAccess.Interfaces;
 
 namespace WebAppNotes.DataAccess.Repositories
 {
-    public class EntityRepository<T> : IRepository<T> where T : Entity
+    public abstract class EntityRepository<T> : IRepository<T> where T : Entity
     {
 
         private readonly AppDbContext _context;
